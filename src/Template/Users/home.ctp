@@ -19,6 +19,7 @@ use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
+use Cake\Routing\Router;
 ?>
 <style>
     .checkbox label:after, 
@@ -841,6 +842,7 @@ use Cake\Network\Exception\NotFoundException;
             </div>
             <?php echo $this->Form->create($users, ['id' => 'login-form', 'url' => ['controller' => 'users', 'action' => 'login']]); ?>
             <div class="modal-body">
+                <div class="log-alert"></div>
                 <div class="form-group col-md">
                     <label for="email">Email address:</label>
                     <input type="email" class="form-control" name="email" id="log-email">
@@ -1006,19 +1008,24 @@ use Cake\Network\Exception\NotFoundException;
                 data: formData,
                 success: function (data, textStatus, jqXHR)
                 {
-                    if (data == '200') {
-                        $("#regModal").modal('toggle');
-                        $("#loginModal").modal();
-                        $(".log-alert").html("<div class='alert alert-success'>\n\
+                    if(data == false) {   
+                        $(".log-alert").html("<div class='alert alert-danger'>\n\
                                    <a class='close' href='#' data-dismiss='alert' aria-label='close' title='close'>×</a>\n\
-                                   <strong>Success!</strong> Registration was successful, please login with your email and password.</div>");
-                    } else {
-                        $(".reg-alert").html(data);
+                                   <strong>Incorrect email or password</strong></div>");
                     }
+                    else if(data == true) {
+                        window.location.href = "<?php echo Router::url('/users/dashboard'); ?>";
+                    }
+                    else{
+                        $(".log-alert").html("<div class='alert alert-danger'>\n\
+                                   <a class='close' href='#' data-dismiss='alert' aria-label='close' title='close'>×</a>\n\
+                                   <strong>An error occured, please try again.</strong></div>"); 
+                    }    
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    alert(errorThrown);
-                    //location.reload();
+                    $(".log-alert").html("<div class='alert alert-danger'>\n\
+                                   <a class='close' href='#' data-dismiss='alert' aria-label='close' title='close'>×</a>\n\
+                                   <strong>"+errorThrown+"</strong></div>"); 
                 }
             });
         });

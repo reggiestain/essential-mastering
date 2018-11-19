@@ -72,22 +72,24 @@ class UsersController extends AppController {
      * @return type
      */
     public function login() {
-        $users = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $AuthUser = $this->Auth->identify();            
-            if ($AuthUser) {
-                $this->Auth->setUser($AuthUser);
+            $user = $this->Auth->identify();       
+            if ($user) {
+                $this->Auth->setUser($user);
                 $auditTable = $this->AuditLogs->newEntity();
                 $Log = ['user_id' => $this->Auth->user('id'), 'event' => 'Sign In'];
                 $Audit = $this->AuditLogs->patchEntity($auditTable, $Log);
                 $this->AuditLogs->save($Audit);
-                $this->Flash->success(__('Welcome ' . $this->Auth->user('email')));
-                return $this->redirect($this->Auth->redirectUrl());
+                //$this->Flash->success(__('Welcome ' . $this->Auth->user('email')));
+                //return $this->redirect($this->Auth->redirectUrl());
+                $status = true;
+            }else{
+            //$this->Flash->error(__('Incorrect email or password'));
+            $status = false;            
             }
-            $this->Flash->error(__('Incorrect email or password'));
         }
-        $this->set('users', $users);
-        $this->set('title', 'Login');
+        $this->set('status', $status);
+        $this->viewBuilder()->layout(false);
     }
 
     /**
