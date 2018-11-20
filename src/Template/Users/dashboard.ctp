@@ -68,7 +68,66 @@ use Cake\Auth;
         font-size: 12px;
         line-height: 2.428571429;
         border-radius: 30px;
-    }   
+    }  
+
+    .checkbox label:after, 
+    .radio label:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    .checkbox .cr,
+    .radio .cr {
+        position: relative;
+        display: inline-block;
+        border: 1px solid #a9a9a9;
+        border-radius: .25em;
+        width: 1.3em;
+        height: 1.3em;
+        float: left;
+        margin-right: .5em;
+    }
+
+    .radio .cr {
+        border-radius: 50%;
+    }
+
+    .checkbox .cr .cr-icon,
+    .radio .cr .cr-icon {
+        position: absolute;
+        font-size: .8em;
+        line-height: 0;
+        top: 50%;
+        left: 20%;
+    }
+
+    .radio .cr .cr-icon {
+        margin-left: 0.04em;
+    }
+
+    .checkbox label input[type="checkbox"],
+    .radio label input[type="radio"] {
+        display: none;
+    }
+
+    .checkbox label input[type="checkbox"] + .cr > .cr-icon,
+    .radio label input[type="radio"] + .cr > .cr-icon {
+        transform: scale(3) rotateZ(-20deg);
+        opacity: 0;
+        transition: all .3s ease-in;
+    }
+
+    .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+    .radio label input[type="radio"]:checked + .cr > .cr-icon {
+        transform: scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
+
+    .checkbox label input[type="checkbox"]:disabled + .cr,
+    .radio label input[type="radio"]:disabled + .cr {
+        opacity: .5;
+    }    
 
 </style>
 <body class="skin-blue">
@@ -122,11 +181,11 @@ use Cake\Auth;
                                             <p>Select date and slot</p>
                                         </div>
                                         <div class="stepwizard-step">
-                                            <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                            <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
                                             <p>Fill your information</p>
                                         </div>
                                         <div class="stepwizard-step">
-                                            <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
+                                            <a href="#step-5" type="button" class="btn btn-default btn-circle" disabled="disabled">5</a>
                                             <p>Confirm reservation</p>
                                         </div>
                                     </div>
@@ -137,42 +196,62 @@ use Cake\Auth;
                                         <div class="col-md-12">
                                             <div class="col-md-12">
                                                 <h3> Choose a service</h3>
-                                                <div class="row">       
+                                                <div class="row"> 
                                                     <div class="col-sm-4">
-                                                        <div class="checkbox">
+                                                        <div class="form-group radio">
                                                             <label style="font-size: 1.8em">
-                                                                <input type="checkbox" value="" checked>
+                                                                <input type="radio" name="o3" value="Mastering" required="required">
                                                                 <span class="cr"><i class="cr-icon fa fa-music"></i></span>
                                                                 Mastering
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <div class="checkbox">
+                                                        <div class="form-group radio">
                                                             <label style="font-size: 1.8em">
-                                                                <input type="checkbox" value="">
+                                                                <input type="radio" name="o3" value="Mixing" required="required">
                                                                 <span class="cr"><i class="cr-icon fa fa-headphones"></i></span>
                                                                 Mixing
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
-                                                        <div class="checkbox">
+                                                        <div class="form-group radio">
                                                             <label style="font-size: 1.8em">
-                                                                <input type="checkbox" value="">
+                                                                <input type="radio" name="o3" value="Recording" required="required">
                                                                 <span class="cr"><i class="cr-icon glyphicon glyphicon-record"></i></span>
                                                                 Recording
                                                             </label>
                                                         </div>
-                                                    </div>
+                                                    </div> 
                                                     <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row setup-content" id="step-2">
+                                    </div>
+                                    <div class="row setup-content" id="step-2">
+                                        <div class="col-xs-6 col-md-12">
+                                            <div class="col-md-12">
+                                                <h3> Customize service</h3>
+                                                <div class="form-group">
+                                                    <label class="control-label">How many tracks would you like to master?</label>
+                                           <?php
+                                           $track = ['1 track'=>'1 track','2 track'=>'2 track','3 track'=>'3 track','4 track'=>'4 track',
+                                                    '5 track'=>'5 track','6 track'=>'6 track','7 track'=>'7 track','8 track'=>'8 track',
+                                                    '9 track'=>'9 track','10 track'=>'10 track','11 track'=>'11 track','12 or more'=>'12 or more'
+                                                   ];
+                                           echo $this->Form->select('track', $track, ['empty' => '1 track', 'class' => 'form-control', 
+                                                 'label' => false, 'required' => true,'id'=>'track']);
+                                           ?>
+                                                </div>                                                    
+                                                <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
+                                                <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                                            </div>
+                                        </div>
+                                        <div class="row setup-content" id="step-3">
                                             <div class="col-xs-6 col-md-12">
                                                 <div class="col-md-12">
-                                                    <h3> Customize service</h3>
+                                                    <h3> Select date and slot</h3>
                                                     <div class="form-group">
                                                         <label class="control-label">Company Name</label>
                                                         <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name">
@@ -185,114 +264,104 @@ use Cake\Auth;
                                                     <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
                                                 </div>
                                             </div>
-                                            <div class="row setup-content" id="step-3">
-                                                <div class="col-xs-6 col-md-12">
-                                                    <div class="col-md-12">
-                                                        <h3> Select date and slot</h3>
-                                                        <div class="form-group">
-                                                            <label class="control-label">Company Name</label>
-                                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label">Company Address</label>
-                                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address">
-                                                        </div>
-                                                        <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-                                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row setup-content" id="step-4">
-                                                <div class="col-xs-6 col-md-12">
-                                                    <div class="col-md-12">
-                                                        <h3> Fill your information</h3>
-                                                        <div class="form-group">
-                                                            <label class="control-label">Company Name</label>
-                                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name">
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label class="control-label">Company Address</label>
-                                                            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address">
-                                                        </div>
-                                                        <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-                                                        <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row setup-content" id="step-5">
-                                                <div class="col-xs-6 col-md-12">
-                                                    <div class="col-md-12">
-                                                        <h3> Confirm reservation</h3>
-                                                        <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-                                                        <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            </form>
                                         </div>
-                                        <!-- /.box-body -->
-                                    </div>
-                                    <!-- /.box -->
+                                        <div class="row setup-content" id="step-4">
+                                            <div class="col-xs-6 col-md-12">
+                                                <div class="col-md-12">
+                                                    <h3> Fill your information</h3>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Company Name</label>
+                                                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Company Address</label>
+                                                        <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address">
+                                                    </div>
+                                                    <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
+                                                    <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row setup-content" id="step-5">
+                                            <div class="col-xs-6 col-md-12">
+                                                <div class="col-md-12">
+                                                    <h3> Confirm reservation</h3>
+                                                    <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
+                                                    <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </form>
                             </div>
-                            <!-- /.col -->
+                            <!-- /.box-body -->
                         </div>
-                        <!-- /.row -->
-                        </section>
-                        <!-- /.content -->
+                        <!-- /.box -->
                     </div>
-                    <!-- /.content-wrapper -->
-                    <script>
-                        $(document).ready(function () {
-                            var navListItems = $('div.setup-panel div a'),
-                                    allWells = $('.setup-content'),
-                                    allNextBtn = $('.nextBtn'),
-                                    allPrevBtn = $('.prevBtn');
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <script>
+            $(document).ready(function () {
+                var navListItems = $('div.setup-panel div a'),
+                        allWells = $('.setup-content'),
+                        allNextBtn = $('.nextBtn'),
+                        allPrevBtn = $('.prevBtn');
 
-                            allWells.hide();
+                allWells.hide();
 
-                            navListItems.click(function (e) {
-                                e.preventDefault();
-                                var $target = $($(this).attr('href')),
-                                        $item = $(this);
+                navListItems.click(function (e) {
+                    e.preventDefault();
 
-                                if (!$item.hasClass('disabled')) {
-                                    navListItems.removeClass('btn-primary').addClass('btn-default');
-                                    $item.addClass('btn-primary');
-                                    allWells.hide();
-                                    $target.show();
-                                    $target.find('input:eq(0)').focus();
-                                }
-                            });
+                    var $target = $($(this).attr('href')),
+                            $item = $(this);
 
-                            allPrevBtn.click(function () {
-                                var curStep = $(this).closest(".setup-content"),
-                                        curStepBtn = curStep.attr("id"),
-                                        prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
+                    if (!$item.hasClass('disabled')) {
+                        navListItems.removeClass('btn-primary').addClass('btn-default');
+                        $item.addClass('btn-primary');
+                        allWells.hide();
+                        $target.show();
+                        $target.find('input:eq(0)').focus();
+                    }
+                });
 
-                                prevStepWizard.removeAttr('disabled').trigger('click');
-                            });
+                allPrevBtn.click(function () {
+                    var curStep = $(this).closest(".setup-content"),
+                            curStepBtn = curStep.attr("id"),
+                            prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
 
-                            allNextBtn.click(function () {
-                                var curStep = $(this).closest(".setup-content"),
-                                        curStepBtn = curStep.attr("id"),
-                                        nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-                                        curInputs = curStep.find("input[type='text'],input[type='url']"),
-                                        isValid = true;
+                    prevStepWizard.removeAttr('disabled').trigger('click');
+                });
 
-                                $(".form-group").removeClass("has-error");
-                                for (var i = 0; i < curInputs.length; i++) {
-                                    if (!curInputs[i].validity.valid) {
-                                        isValid = false;
-                                        $(curInputs[i]).closest(".form-group").addClass("has-error");
-                                    }
-                                }
+                allNextBtn.click(function () {
+                    var curStep = $(this).closest(".setup-content"),
+                            curStepBtn = curStep.attr("id"),
+                            nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
+                            curInputs = curStep.find("input[type='text'],input[type='url'],input[type='radio'], select"),
+                            isValid = true;
 
-                                if (isValid)
-                                    nextStepWizard.removeAttr('disabled').trigger('click');
-                            });
+                    $(".form-group").removeClass("has-error");
+                    for (var i = 0; i < curInputs.length; i++) {
+                        
+                        if (curInputs[i].validity.valid == false) {
+                            isValid = false;
+                            $(curInputs[i]).closest(".form-group").addClass("has-error");
+                        }
+                        
+                        if (curInputs[i].validity.valid == true) {
+                            nextStepWizard.removeAttr('disabled').trigger('click');
+                        }
+                        
+                    }
+                    
+                   
+                });
 
-                            $('div.setup-panel div a.btn-primary').trigger('click');
-                        });
-                    </script>
+                $('div.setup-panel div a.btn-primary').trigger('click');
+            });
+        </script>
 
 
