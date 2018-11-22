@@ -34,13 +34,14 @@ use Cake\Http\Client;
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+
     /**
      *
      * @var type 
      */
     private $amdorenkey = 'U7ABNSyefTt2yCFQdrPrR7CVSQuXur';
     private $fixerkey = '4ec0b8a0f028a05954a7e519704aec22';
-    
+
     /**
      * Initialization hook method.
      *
@@ -49,7 +50,7 @@ class AppController extends Controller {
      * e.g. `$this->loadComponent('Security');`
      *
      * @return void
-     */   
+     */
     public function initialize() {
         $this->loadComponent('Csrf');
         $this->loadComponent('RequestHandler');
@@ -81,7 +82,6 @@ class AppController extends Controller {
     public function beforeFilter(\Cake\Event\Event $event) {
         $this->loadModel('AuditLogs');
         $this->loadModel('Users');
-        
     }
 
     /**
@@ -92,7 +92,7 @@ class AppController extends Controller {
      */
     public function beforeRender(Event $event) {
         if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
+                in_array($this->response->type(), ['application/json', 'application/xml'])
         ) {
             $this->set('_serialize', true);
         }
@@ -104,26 +104,34 @@ class AppController extends Controller {
         $DefaultEmail->viewVars(['id' => $id, 'topay' => $order->amount_to_pay, 'currency' => $order->foreign_currency_purchased, 'amount' => $order->amount_of_foreign_currency]);
         $DefaultEmail->transport('default');
         $DefaultEmail->template('orderdetails', 'orderdetails')
-            ->emailFormat('html')
-            ->from(['info@siyanontech.co.za' => 'siyanontech.co.za'])
-            ->to($this->Auth->user('email'))
-            ->subject('Order Details')
-            ->send();
+                ->emailFormat('html')
+                ->from(['info@siyanontech.co.za' => 'siyanontech.co.za'])
+                ->to($this->Auth->user('email'))
+                ->subject('Order Details')
+                ->send();
     }
-    
+
+    function in_range($number, $min, $max, $inclusive = FALSE) {
+        if (is_int($number) && is_int($min) && is_int($max)) {
+            return $inclusive ? ($number >= $min && $number <= $max) : ($number > $min && $number < $max);
+        }
+
+        return FALSE;
+    }
+
     protected function fetchRate() {
         $http = new Client();
-        $response = $http->get('http://data.fixer.io/api/latest?access_key='.$this->fixerkey);
-        
+        $response = $http->get('http://data.fixer.io/api/latest?access_key=' . $this->fixerkey);
+
         return $response;
     }
 
-    protected function convert($from,$to,$amount) {
+    protected function convert($from, $to, $amount) {
         $http = new Client();
-        $response = $http->get('https://www.amdoren.com/api/currency.php?api_key='.$this->amdorenkey.'&from='.$from.'&to='.$to.'&amount='.$amount);
-        if($response->isOk()){
-           $result = json_decode($response->body(), true);
-           return $result['amount'];
+        $response = $http->get('https://www.amdoren.com/api/currency.php?api_key=' . $this->amdorenkey . '&from=' . $from . '&to=' . $to . '&amount=' . $amount);
+        if ($response->isOk()) {
+            $result = json_decode($response->body(), true);
+            return $result['amount'];
         }
         return false;
     }

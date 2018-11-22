@@ -126,53 +126,21 @@ class UsersController extends AppController {
         }
     }
 
-    public function updaterates() {
-        $codeArray = ['USD', 'GBP', 'EUR', 'KES'];
-        if ($this->fetchRate()->isOk()) {
-            
-            $curr = json_decode($this->fetchRate()->body(), true);
-            foreach ($curr['rates'] as $key => $rate) {
-                if (in_array($key, $codeArray)) {
-                    $data = $this->Currencies->find()->where(['code' => $key])->first();
-                    $data->rate = $rate;
-                    $this->Currencies->save($data);
-                }
-            }
-            $this->Flash->success(__('Currency rate has been updated successfully.'));
-            return $this->redirect(['action' => 'index']);
-        }
-        $this->Flash->error(__('An error occured, please try again.'));
-        return $this->redirect(['action' => 'index']);
-    }
-
-    public function conversionRate($fromCurrency, $toCurrency) {
+    public function pricing($track) {
         if ($this->request->is('ajax')) {
-            $rate = $this->fetchRate($fromCurrency, $toCurrency);
-            $this->set([
-                'value' => $rate,
-                '_serialize' => ['value']
-            ]);
-        }
-    }
-
-    public function getRates($fromCurrency, $toCurrency, $amount) {
-        if ($this->request->is('ajax')) {
-            $currs = $this->Currencies->find()->where(['code' => $fromCurrency])->select(['surcharge', 'code', 'rate', 'name'])->first();
-            if (!$this->convert($fromCurrency, $toCurrency, $amount) == false) {
-                $value = $this->convert($fromCurrency, $toCurrency, $amount);
-                $surCharge = ($currs->surcharge / 100) * $value;
-                $rate = $currs->rate;
-                $amountTopay = $value + $surCharge;
-                $this->set(['surPerc' => $currs->surcharge, 'currency' => $fromCurrency,
-                    'surCharge' => $surCharge, 'amountTopay' => $amountTopay,
-                    'ZarAmountForeign' => $value, 'rate' => $rate, 'surCharge' => $surCharge,
-                    'Foreignamount' => $amount]);
-            } else {
-                $this->render('unmatched');
+            $number = (int)$track;
+            if($this->in_range($number, 0, 4)){                
+               $price = 450;
+            }elseif($this->in_range($number, 3, 8)){
+               $price = 400; 
+            }elseif($this->in_range($number, 7, 13)){
+               $price = 350; 
             }
-            $this->viewBuilder()->layout(false);
-        }
-    }
+            $this->set('price',$price);
+            $this->set('number',$number);
+       }
+       $this->viewBuilder()->layout(false);
+    }    
 
     /**
      * 

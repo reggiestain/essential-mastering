@@ -26,6 +26,7 @@ $cakeDescription = '';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <?php echo $this->Html->css('mentor/bootstrap.min.css');?>
+        <?php echo $this->Html->css('mentor/fullcalendar.css');?>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <!-- Ionicons 2.0.0 -->
         <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />   
@@ -33,15 +34,20 @@ $cakeDescription = '';
         <?php echo $this->Html->css('mentor/datatable/dataTables.bootstrap.min.css');?> 
         <?php echo $this->Html->css('mentor/AdminLTE.min.css');?>
         <?php echo $this->Html->css('mentor/skins/_all-skins.min.css') ;?>
-        <?php echo $this->Html->css('cake-style.css') ;?>        
+        <?php echo $this->Html->css('cake-style.css') ;?>     
+        
+        
         <!-- jQuery UI-->
     <!-- Bootstrap 3.3.2 JS -->
-        <?php echo $this->Html->script('mentor/jQuery/jquery.min');?>
+        <?php echo $this->Html->script('mentor/jquery');?>
         <?php echo $this->Html->script('mentor/bootstrap/bootstrap.min');?>
+        <?php echo $this->Html->script('mentor/moment.min');?>
+        <?php echo $this->Html->script('mentor/fullcalendar.min');?>
         <?php echo $this->Html->script('mentor/datatable/jquery.dataTables');?>
         <?php echo $this->Html->script('mentor/datatable/dataTables.bootstrap.min');?>
         <?php echo $this->Html->script('jquery.slimscroll.min');?>
         <?php echo $this->Html->script('mentor/daterangepicker/daterangepicker');?>
+           
     <!-- datepicker -->
     <?php echo $this->Html->script('mentor/datepicker/bootstrap-datepicker');?>   
     <?php echo $this->Html->script('mentor/fastclick/fastclick.min');?>

@@ -58,7 +58,7 @@
             </li>
             <li>
               <a href="pages/widgets.html">
-                <i class="fa fa-th"></i> <span>Students</span> <small class="label pull-right bg-green">new</small>
+                <i class="fa fa-user"></i> <span>Profile</span> <small class="label pull-right bg-green">new</small>
               </a>
             </li>
             
