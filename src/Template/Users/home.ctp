@@ -576,17 +576,17 @@ use Cake\Routing\Router;
     <!-- /Background Image -->
 
     <!-- Container -->
-    <div class="container">
+   <!-- <div class="container">
 
         <!-- Row -->
-        <div class="row">
+        <!--<div class="row">
 
             <!-- Testimonial slider -->
-            <div class="col-md-10 col-md-offset-1">
+            <!--<div class="col-md-10 col-md-offset-1">
                 <div id="testimonial-slider" class="owl-carousel owl-theme">
 
                     <!-- testimonial -->
-                    <div class="testimonial">
+                    <!--<div class="testimonial">
                         <div class="testimonial-meta">
                             <img src="./img/perso1.jpg" alt="">
                             <h3 class="white-text">John Doe</h3>
@@ -597,7 +597,7 @@ use Cake\Routing\Router;
                     <!-- /testimonial -->
 
                     <!-- testimonial -->
-                    <div class="testimonial">
+                    <!--<div class="testimonial">
                         <div class="testimonial-meta">
                             <img src="./img/perso2.jpg" alt="">
                             <h3 class="white-text">John Doe</h3>
@@ -607,14 +607,14 @@ use Cake\Routing\Router;
                     </div>
                     <!-- /testimonial -->
 
-                </div>
+                <!--</div>
             </div>
             <!-- /Testimonial slider -->
 
-        </div>
+        <!--</div>
         <!-- /Row -->
 
-    </div>
+    <!--</div>
     <!-- /Container -->
 
 </div>

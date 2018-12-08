@@ -231,8 +231,8 @@ return [
              */
             //'port' => 'non_standard_port_number',
             'username' => 'root',
-            'password' => 'dev5',
-            'database' => 'essentials',
+            'password' => '',
+            'database' => 'essential',
             'encoding' => 'utf8',
             'timezone' => '',
             'flags' => [],
@@ -266,13 +266,10 @@ return [
         'driver' => 'Cake\Database\Driver\Mysql',
         'persistent' => false,
         'host' => 'localhost',
-        'port' => DB_PORT,
-
         //'port' => 'non_standard_port_number',
         'username' => 'root',
-        'password' => 'dev5',
-        'database' => 'essentials',
-
+        'password' => '',
+        'database' => 'essential',
         //'encoding' => 'utf8mb4',
         'timezone' => 'UTC',
         'flags' => [],
