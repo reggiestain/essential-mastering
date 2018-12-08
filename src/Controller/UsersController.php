@@ -52,8 +52,10 @@ class UsersController extends AppController {
      * Displays home view
      */
     public function home() {
+        $content = $this->Content->get(1);
         $user = $this->Users->newEntity();
         $this->set('users', $user);
+        $this->set('content', $content);
         
     }
     
@@ -206,7 +208,15 @@ class UsersController extends AppController {
     }
     
     public function content() {
-        $content = $this->Content->find();
+        $content = $this->Content->get(1);
+        if ($this->request->is(['post', 'put'])) {
+        $this->Content->patchEntity($content, $this->request->data);
+        if ($this->Content->save($content)) {
+            $this->Flash->success(__('Content has been updated.'));
+            return $this->redirect(['action' => 'content']);
+        }
+        $this->Flash->error(__('Unable to update your content.'));
+    }
         $this->set('content', $content);
         $this->viewBuilder()->layout('admin');    
     }

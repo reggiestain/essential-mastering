@@ -106,7 +106,7 @@
                     <li><a href="#team">Our Team</a></li>
                     <li class="dropdown-c"><a href="#blog">Studio</a>
                         <ul class="dropdown-content">
-                            <li><a href="#">&nbsp How to upload / send track</a></li>
+                            <li class="track-info"><a href="#">&nbsp How to upload / send track</a></li>
                         </ul>
                     </li>
                     <li><a href="#contact">Contact</a></li>

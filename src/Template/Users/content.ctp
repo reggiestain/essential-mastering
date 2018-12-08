@@ -22,30 +22,30 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\Routing\Router;
 ?>
 <style>
-.nav-tabs { border-bottom: 2px solid #DDD; }
+    .nav-tabs { border-bottom: 2px solid #DDD; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover { border-width: 0; }
-    .nav-tabs > li > a { border: none; color: #666; }
-        .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
-        .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
+    .nav-tabs > li > a { border: none; color: #666; font-size: 18px; font-weight: bold}
+    .nav-tabs > li.active > a, .nav-tabs > li > a:hover { border: none; color: #4285F4 !important; background: transparent; }
+    .nav-tabs > li > a::after { content: ""; background: #4285F4; height: 2px; position: absolute; width: 100%; left: 0px; bottom: -1px; transition: all 250ms ease 0s; transform: scale(0); }
     .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after { transform: scale(1); }
-.tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
-.tab-pane { padding: 15px 0; }
-.tab-content{padding:20px}
+    .tab-nav > li > a::after { background: #21527d none repeat scroll 0% 0%; color: #fff; }
+    .tab-pane { padding: 15px 0; }
+    .tab-content{padding:20px}
 
-.card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
-body{ background: #EDECEC; padding:50px}
+    .card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
+    body{ background: #EDECEC; padding:50px}
 </style>
 <body class="skin-blue">
     <div class="wrapper">      
-    <?php echo $this->element('mentor/header');?>
+        <?php echo $this->element('mentor/header'); ?>
         <!-- Left side column. contains the logo and sidebar -->
-    <?php echo $this->element('mentor/sidebar');?>  
+        <?php echo $this->element('mentor/sidebar'); ?>  
         <!-- Right side column. Contains the navbar and content of the page -->
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <section class="content-header">
                 <h1>
-                    Profile
+                    Content
                     <small>View</small>
                 </h1>
                 <!--  
@@ -58,80 +58,89 @@ body{ background: #EDECEC; padding:50px}
             </section>
             <!-- Main content -->
             <section class="content">
-            <?php echo $this->element('mentor/card');?>  
+                <?php echo $this->element('mentor/card'); ?>  
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="box">
                             <div class="box-header"> 
-                                <h3>Profile View</h3>
+                                <h3>Content</h3>
                             </div>
-                            
-                            <!-- /.box-header -->
-                            <?php echo $this->Form->create($profile, ['id' => 'reg-form', 'url' => ['controller' => 'users', 'action' => 'profile']]); ?>        
-                            <div class="box-body">
-                                <div class="container">
-	<div class="row">
-		                                <div class="col-md-12">
-                                    <!-- Nav tabs --><div class="card">
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-                                    </ul>
 
-                                    <!-- Tab panes -->
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active" id="home">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                                        <div role="tabpanel" class="tab-pane" id="profile">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
-                                        <div role="tabpanel" class="tab-pane" id="messages">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-                                        <div role="tabpanel" class="tab-pane" id="settings">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passage..</div>
-                                    </div>
-</div>
-                                </div>
-	</div>
-</div>
-                                <div><?php echo $this->Flash->render();?></div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
                                 <div class="row">
-                                    <div class="form-group col-md-6">
-                                        <label for="name">First Name:</label>  
-                                    <?php echo $this->Form->input('first_name', ['templates' => ['inputContainer' => '{{content}}'],'type' => 'text','class' => 'form-control','label' => false, 'required' => true]); ?>
+                                    <div class="col-md-12">
+                                        <!-- Nav tabs --><div class="card">
+                                            <ul class="nav nav-tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">About</a></li>
+                                                <li role="presentation"><a href="#mission" aria-controls="mission" role="tab" data-toggle="tab">Mission</a></li>
+                                                <li role="presentation"><a href="#vision" aria-controls="vision" role="tab" data-toggle="tab">Vision</a></li>
+                                                <li role="presentation"><a href="#values" aria-controls="values" role="tab" data-toggle="tab">Values</a></li>
+                                                <li role="presentation"><a href="#services" aria-controls="values" role="tab" data-toggle="tab">Services</a></li>
+                                                <!--<li role="presentation"><a href="#price" aria-controls="values" role="tab" data-toggle="tab">Pricing</a></li>-->
+                                                <li role="presentation"><a href="#terms" aria-controls="values" role="tab" data-toggle="tab">Terms</a></li>
+                                                <li role="presentation"><a href="#policy" aria-controls="values" role="tab" data-toggle="tab">Policy</a></li>
+                                                <li role="presentation"><a href="#track" aria-controls="values" role="tab" data-toggle="tab">Prepare Your Track</a></li>
+                                            </ul>
+                                            <!-- Tab panes -->
+                                            <?php echo $this->Form->create($content, ['id' => 'form', 'url' => ['controller' => 'users', 'action' => 'content']]); ?>
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane active" id="about">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('about', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'about-c', 'required' => false, 'error' => true]); ?>   
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="mission">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('mission', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'mission-c', 'required' => false, 'error' => true]); ?>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="vision">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('vision', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'vision-c', 'required' => false, 'error' => true]); ?>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="values">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('our_values', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'values-c', 'required' => false, 'error' => true]); ?>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="services">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('services', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'service-c', 'required' => false, 'error' => true]); ?>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="terms">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('terms', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'terms-c', 'required' => false, 'error' => true]); ?>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="policy">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('policy', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'policy-c', 'required' => false, 'error' => true]); ?>
+                                                    </div>
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane" id="track">
+                                                    <div><?php echo $this->Flash->render(); ?></div>
+                                                    <div class="form-group">
+                                                        <?php echo $this->Form->textarea('track_info', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'id' => 'track-c', 'required' => false, 'error' => true]); ?>
+                                                    </div>
+                                                </div>
+                                                <div class="box-footer">
+                                                    <button type="submit" class="btn btn-info">Submit</button>
+                                                </div> 
+                                            </div>
+                                            <?php echo $this->Form->end(); ?>
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="name">Surname:</label>
-                                    <?php echo $this->Form->input('surname', ['templates' => ['inputContainer' => '{{content}}'],'type' => 'text', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>
-                                    </div>
-                                </div> 
-                                <div class="row">                                    
-                                    <div class="form-group col-md-6">
-                                        <label for="name">Email:</label>
-                                     <?php echo $this->Form->input('email', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'email', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="email">Mobile:</label>
-                                    <?php echo $this->Form->input('mobile', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>
-                                    </div>
-                                </div> 
-                                <div class="row">               
-                                    <div class="form-group col-md-6">
-                                        <label for="email">Gender:</label>
-                                    <?php echo $this->Form->input('gender', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="email">Race:</label>
-                                     <?php echo $this->Form->input('race', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>
-                                    </div>
-                                </div>
-                                <div class="row">               
-                                    <div class="form-group col-md-6">
-                                        <label for="email">Username:</label>
-                                    <?php echo $this->Form->input('username', ['templates' => ['inputContainer' => '{{content}}'], 'type' => 'text', 'label' => false, 'class' => 'form-control', 'required' => false, 'error' => true]); ?>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">                                    
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                </div>
-                          <?php echo $this->Form->end(); ?>
+                                </div>                                                               
                             </div> 
                             <!-- /.box-body -->
                         </div>
@@ -147,6 +156,13 @@ body{ background: #EDECEC; padding:50px}
 
 <script>
     $(document).ready(function () {
-        $('#example').DataTable();
+        $('#about-c').summernote();
+        $('#mission-c').summernote();
+        $('#vision-c').summernote();
+        $('#values-c').summernote();
+        $('#service-c').summernote();
+        $('#terms-c').summernote();
+        $('#policy-c').summernote();
+        $('#track-c').summernote();
     });
 </script>

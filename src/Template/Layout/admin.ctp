@@ -26,17 +26,16 @@ $cakeDescription = '';
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
         <?php echo $this->Html->css('mentor/bootstrap.min.css');?>
+        <?php echo $this->Html->css('summernote.css') ;?>
         <?php echo $this->Html->css('mentor/fullcalendar.css');?>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-        <!-- Ionicons 2.0.0 -->
-        <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />   
         <?php echo $this->Html->css('summernote.css') ;?>
+        <!-- Ionicons 2.0.0 -->
+        <?php echo $this->Html->css('font-awesome.min.css') ;?>
         <?php echo $this->Html->css('mentor/datatable/dataTables.bootstrap.min.css');?> 
         <?php echo $this->Html->css('mentor/AdminLTE.min.css');?>
         <?php echo $this->Html->css('mentor/skins/_all-skins.min.css') ;?>
         <?php echo $this->Html->css('cake-style.css') ;?>     
-        
-        
         <!-- jQuery UI-->
     <!-- Bootstrap 3.3.2 JS -->
         <?php echo $this->Html->script('mentor/jquery');?>

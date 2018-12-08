@@ -86,11 +86,8 @@ use Cake\Routing\Router;
             <div class="section-header text-center">
                 <h2 class="title">Welcome</h2>
                 <p>
-                    <b>Essential Mastering</b> offers a highly advanced audio post-production service in pursuit of delivering professional quality tracks to the client. The company also offers professional audio production and recording services in the creation of jingles, adverts, audio flyers and other related products.    
-                </p>
-                <p>
-                    Based in South Africa, Essential Mastering exemplifies quality and value for money, providing our clients with the highest standards of audio post-production services available in the country.
-                    <a href="#contact" class="main-btn">Contact Us</a>
+                   <?php echo $content->about;?>
+                   <a href="#contact" class="main-btn">Contact Us</a>
                 </p>
             </div>
             <!-- /Section header -->
@@ -102,8 +99,7 @@ use Cake\Routing\Router;
                     <div class="caption">
                         <h3> OUR MISSION </h3>
                         <p>
-                            We endeavour to reach our goals by leveraging our expertise, experience and state-of-the -art resources to produce work that is of the highest international standard, ensuring outcomes that consistently exceed client expectations. 
-                            We are committed to delivering high level of efficiency.    
+                        <?php echo $content->mission;?>    
                         </p>
                     </div>
                     <!-- <a href="#">Read more</a>-->
@@ -118,8 +114,7 @@ use Cake\Routing\Router;
                     <div class="caption">
                         <h3>OUR VALUES</h3>
                         <p>
-                            Quality and Reliability in all services that are carried out. Dedication and discipline in maintaining a high standard of customer service. Respect and appreciation for staff, associates and customers. 
-                            Honesty and integrity in all business dealings, both internally and externally.    
+                        <?php echo $content->our_values;?>        
                         </p>
                     </div>
                 </div>
@@ -133,8 +128,7 @@ use Cake\Routing\Router;
                     <div class="caption">
                         <h3>OUR VISION</h3>
                         <p>
-                            We strive to provide world-class audio post-production services for a 
-                            wide variety of clients to the extent that we become the preferred of such services in South Africa and beyond. The customer can count on us to credibly meet and exceed their expectations through continuous service improvement.   
+                        <?php echo $content->vision;?>    
                         </p>
                     </div>
                 </div>
@@ -302,12 +296,7 @@ use Cake\Routing\Router;
             </div>
             <!-- /Section header -->
             <p>
-                We have the technical expertise to offer professional audio post-production services through our team of experienced and dedicated mastering engineers. 
-                We implement the latest mastering techniques and cutting edge mastering resources to provide clients with the best available sound production for their specific applications. 
-                Our standard audio quality ranges from 16bit sampled at 44 kHz (CD quality) to 24bit Hi-Resolution sampled at 96 kHz or more, depending on client requirements. 
-                We remain committed to delivering a high quality service within the agreed time-frame and the applicable budget. 
-                In order to continue our fascination with technology and improve the convenience factor for our clients, we have developed a digital platform to enable online uploading of audio files, online payment processing, digital booking and other advanced services that can be enjoyed remotely at the client’s ultimate convenience. 
-                Thanks to the amalgamation of skills and expertise brought to the table by the founding members and managers of the company, Essential Mastering has been able to leverage these skills to bring the business into the future and provide clients with the ultimate online offering.
+            <?php echo $content->services;?>
             </p>
             <!-- service -->
             <div class="col-md-12 col-sm-6">
@@ -377,7 +366,7 @@ use Cake\Routing\Router;
             <!-- /why choose us content -->
 
             <!-- About slider -->
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
                 <div id="about-slider" class="owl-carousel owl-theme">
                     <img class="img-responsive" src="./img/about1.jpg" alt="">
                     <img class="img-responsive" src="./img/about2.jpg" alt="">
@@ -975,6 +964,27 @@ use Cake\Routing\Router;
     </div>
 </div>
 
+<!-- Modal -->
+<div id="trackModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">How to upload / send track</h4>
+      </div>
+      <div class="modal-body">
+        <p><?php echo $content->track_info;?></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <script>
     $(document).ready(function () {
         $(document).on("click", ".login", function () {
@@ -984,6 +994,10 @@ use Cake\Routing\Router;
         $(document).on("click", ".reg", function () {
             $("#loginModal").modal('hide');
             $("#regModal").modal();
+        });
+        
+        $(document).on("click", ".track-info", function () {
+            $("#trackModal").modal();
         });
         
         $('#login-form').submit(function (event) {
