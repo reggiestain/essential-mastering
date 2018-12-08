@@ -75,7 +75,7 @@ use Cake\Routing\Router;
             
              <?php if($user->user('user_group_id') == 1) {?>
               <li class="treeview">
-              <a href="#">
+              <a href="<?php echo Cake\Routing\Router::url('/users/content');?>">
                 <i class="fa fa-edit"></i>
                 <span>Content</span>
                 <!--<i class="fa fa-angle-left pull-right" ></i>-->

@@ -204,6 +204,12 @@ class UsersController extends AppController {
         $this->set('order', $order);
         $this->viewBuilder()->layout('admin');    
     }
+    
+    public function content() {
+        $content = $this->Content->find();
+        $this->set('content', $content);
+        $this->viewBuilder()->layout('admin');    
+    }
 
     /**
      * 
