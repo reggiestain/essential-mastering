@@ -27,7 +27,7 @@
 
                         <!-- footer logo -->
                         <div class="footer-logo">
-                            <a href="index.html"><img src="./img/es-logo.png" alt="logo"></a>
+                            <a href="index.html"><?php echo $this->Html->image('es-logo.png',['alt'=>'logo']);?></a>
                         </div>
                         <!-- /footer logo -->
 

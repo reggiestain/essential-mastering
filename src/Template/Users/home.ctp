@@ -1,21 +1,20 @@
 <?php
 
 /**
- * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
- * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  * Licensed under The MIT License
  * For full copyright and license information, please see the LICENSE.txt
  * Redistributions of files must retain the above copyright notice.
  *
- * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
- * @link          https://cakephp.org CakePHP(tm) Project
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
  * @since         0.10.0
- * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 use Cake\Cache\Cache;
 use Cake\Core\Configure;
-use Cake\Core\Plugin;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
@@ -28,7 +27,6 @@ use Cake\Routing\Router;
         display: table;
         clear: both;
     }
-
     .checkbox .cr,
     .radio .cr {
         position: relative;
@@ -40,11 +38,9 @@ use Cake\Routing\Router;
         float: left;
         margin-right: .5em;
     }
-
     .radio .cr {
         border-radius: 50%;
     }
-
     .checkbox .cr .cr-icon,
     .radio .cr .cr-icon {
         position: absolute;
@@ -53,29 +49,24 @@ use Cake\Routing\Router;
         top: 50%;
         left: 20%;
     }
-
     .radio .cr .cr-icon {
         margin-left: 0.04em;
     }
-
     .checkbox label input[type="checkbox"],
     .radio label input[type="radio"] {
         display: none;
     }
-
     .checkbox label input[type="checkbox"] + .cr > .cr-icon,
     .radio label input[type="radio"] + .cr > .cr-icon {
         transform: scale(3) rotateZ(-20deg);
         opacity: 0;
         transition: all .3s ease-in;
     }
-
     .checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
     .radio label input[type="radio"]:checked + .cr > .cr-icon {
         transform: scale(1) rotateZ(0deg);
         opacity: 1;
     }
-
     .checkbox label input[type="checkbox"]:disabled + .cr,
     .radio label input[type="radio"]:disabled + .cr {
         opacity: .5;
@@ -485,28 +476,28 @@ use Cake\Routing\Router;
             </div>
             <!-- /Section header -->
 
-            <!-- pricing -->
+             <!-- pricing -->
             <div class="col-sm-4">
                 <div class="pricing">
                     <div class="price-head">
-                        <span class="price-title">Basic plan</span>
+                        <span class="price-title">Mastering</span>
                         <div class="price">
-                            <h3>$9<span class="duration">/ month</span></h3>
+                            <h3>R 45O<span class="duration">/ 1 - 3 tracks</span></h3>
                         </div>
                     </div>
                     <ul class="price-content">
                         <li>
-                            <p>1GB Disk Space</p>
+                            <p>Radio edit (R55.00 each)</p>
                         </li>
                         <li>
-                            <p>100 Email Account</p>
+                            <p>Backtrack (R55.00 each)</p>
                         </li>
                         <li>
-                            <p>24/24 Support</p>
+                            <p>Instrumental (R55.00 each)</p>
                         </li>
                     </ul>
                     <div class="price-btn">
-                        <button class="outline-btn">Purchase now</button>
+                        <button class="outline-btn login">Book now</button>
                     </div>
                 </div>
             </div>
@@ -516,24 +507,24 @@ use Cake\Routing\Router;
             <div class="col-sm-4">
                 <div class="pricing">
                     <div class="price-head">
-                        <span class="price-title">Silver plan</span>
+                        <span class="price-title">Mixing</span>
                         <div class="price">
-                            <h3>$19<span class="duration">/ month</span></h3>
+                            <h3>R 1800<span class="duration">/ each</span></h3>
                         </div>
                     </div>
                     <ul class="price-content">
                         <li>
-                            <p>1GB Disk Space</p>
+                            <p>Radio edit (R100.00 each)</p>
                         </li>
                         <li>
-                            <p>100 Email Account</p>
+                            <p>Backtrack (R100.00 each)</p>
                         </li>
                         <li>
-                            <p>24/24 Support</p>
+                            <p>Instrumental (R100.00 each)</p>
                         </li>
                     </ul>
                     <div class="price-btn">
-                        <button class="outline-btn">Purchase now</button>
+                        <button class="outline-btn login">Book now</button>
                     </div>
                 </div>
             </div>
@@ -543,29 +534,28 @@ use Cake\Routing\Router;
             <div class="col-sm-4">
                 <div class="pricing">
                     <div class="price-head">
-                        <span class="price-title">Gold plan</span>
+                        <span class="price-title">Recording</span>
                         <div class="price">
-                            <h3>$39<span class="duration">/ month</span></h3>
+                            <h3><span class="duration"></span></h3>
                         </div>
                     </div>
                     <ul class="price-content">
                         <li>
-                            <p>1GB Disk Space</p>
+                            <p></p>
                         </li>
                         <li>
-                            <p>100 Email Account</p>
+                            <p></p>
                         </li>
                         <li>
-                            <p>24/24 Support</p>
+                            <p></p>
                         </li>
                     </ul>
                     <div class="price-btn">
-                        <button class="outline-btn">Purchase now</button>
+                        <button class="outline-btn">Book now</button>
                     </div>
                 </div>
             </div>
             <!-- /pricing -->
-
         </div>
         <!-- Row -->
 
@@ -991,7 +981,6 @@ use Cake\Routing\Router;
             $("#regModal").modal('hide');
             $("#loginModal").modal();
         });
-
         $(document).on("click", ".reg", function () {
             $("#loginModal").modal('hide');
             $("#regModal").modal();
@@ -1029,7 +1018,6 @@ use Cake\Routing\Router;
                 }
             });
         });
-
         $('#reg-form').submit(function (event) {
             event.preventDefault();
             var formData = $(this).serialize();

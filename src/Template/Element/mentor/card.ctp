@@ -2,7 +2,7 @@
 ?>
  <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-lg-4 col-xs-8">
+            <div class="col-lg-4 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
@@ -15,7 +15,7 @@
                 <a href="#" class="small-box-footer">More info <i class="fa fa-music"></i></a>
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-8">
+            <div class="col-lg-4 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
@@ -28,7 +28,7 @@
                 <a href="#" class="small-box-footer">More info <i class="fa fa-headphones"></i></a>
               </div>
             </div><!-- ./col -->
-            <div class="col-lg-4 col-xs-8">
+            <div class="col-lg-4 col-xs-12">
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">

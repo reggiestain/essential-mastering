@@ -1,4 +1,5 @@
 <?php
+use Cake\Routing\Router;
 ?>
 <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -27,7 +28,7 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active"><a href="#"><i class="fa fa-circle-o"></i> Dashboard</a></li>
+            <li class="active"><a href="<?php echo Cake\Routing\Router::url('/users/dashboard');?>"><i class="fa fa-circle-o"></i> Dashboard</a></li>
             <!--<li class="active treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
@@ -57,62 +58,47 @@
               </a>
             </li>
             <li>
-              <a href="pages/widgets.html">
-                <i class="fa fa-user"></i> <span>Profile</span> <small class="label pull-right bg-green">new</small>
+              <a href="<?php echo Router::url('/users/profile');?>">
+                <i class="fa fa-user"></i> <span>Profile</span> <!--<small class="label pull-right bg-green">new</small>-->
               </a>
             </li>
             
-             <?php if($user->user_group_id == 2) {?>
-            <li class="treeview" data-toggle="collapse" data-target="#">
-              <a href="#">
-                <i class="fa fa-plus"></i>
-                <span>Careers</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>              
-              <ul class="treeview-menu">
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/index');?>"><i class="fa fa-circle-o"></i> All Careers</a></li>
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/admin/create');?>"><i class="fa fa-circle-o"></i> Create Career</a></li>
-                <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
-              </ul>
-              </li>
+             <?php if($user->user('user_group_id') == 2) {?>
+             <li class="treeview">
+              <a href="<?php echo Cake\Routing\Router::url('/users/orders');?>">
+                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                <span>Reservations</span>
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
+              </a>             
+             </li>   
               <?php } ?>                         
             
-             <?php if($user->user_group_id == 3) {?>
+             <?php if($user->user('user_group_id') == 1) {?>
               <li class="treeview">
               <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>Programs</span>
-                <i class="fa fa-angle-left pull-right" ></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/list_progam');?>"><i class="fa fa-circle-o"></i> All Programs</a></li>
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/create_program');?>"><i class="fa fa-circle-o"></i> Create Program</a></li>
-                <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
-              </ul>
+                <i class="fa fa-edit"></i>
+                <span>Content</span>
+                <!--<i class="fa fa-angle-left pull-right" ></i>-->
+              </a>             
             </li>  
             <li class="treeview">
-              <a href="#">
-                <i class="fa fa-file-word-o" aria-hidden="true"></i>
-                <span>Contents</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/list_progam');?>"><i class="fa fa-circle-o"></i> All content</a></li>
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/mentors/create_program');?>"><i class="fa fa-circle-o"></i> Create Create</a></li>
-                <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
-              </ul>
+              <a href="<?php echo Cake\Routing\Router::url('/users/orders');?>">
+                <i class="fa fa-pie-chart" aria-hidden="true"></i>
+                <span>Reservations</span>
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
+              </a>             
              </li>   
              <li class="treeview">
-              <a href="#">
-                <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
-                <span>Tests</span>
-                <i class="fa fa-angle-left pull-right"></i>
+              <a href="<?php echo Cake\Routing\Router::url('/users/users');?>">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                <span>Users</span>
+                <!--<i class="fa fa-angle-left pull-right"></i>-->
               </a>
-              <ul class="treeview-menu">
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/index');?>"><i class="fa fa-circle-o"></i> All Test</a></li>
-                <li><a href="<?php echo Cake\Routing\Router::url('/career3-d/tests/add');?>"><i class="fa fa-circle-o"></i> Create Test</a></li>
-                <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>-->
-              </ul>
+              <!--<ul class="treeview-menu">
+                <li><a href="#<?php //echo Cake\Routing\Router::url('/career3-d/tests/index');?>"><i class="fa fa-circle-o"></i> </a></li>
+                <li><a href="#<?php //echo Cake\Routing\Router::url('/career3-d/tests/add');?>"><i class="fa fa-circle-o"></i> </a></li>
+                <!--<li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+              </ul>-->
                </li>
              <?php } ?>
            

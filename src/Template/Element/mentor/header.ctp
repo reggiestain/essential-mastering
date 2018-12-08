@@ -16,7 +16,7 @@
               <li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-envelope-o"></i>
-                  <span class="label label-success">4</span>
+                  <!--<span class="label label-success">4</span>-->
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">You have 4 messages</li>
@@ -93,7 +93,7 @@
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
-                  <span class="label label-warning">10</span>
+                  <!--<span class="label label-warning">10</span>-->
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">You have 10 notifications</li>
@@ -135,7 +135,7 @@
               <li class="dropdown tasks-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-flag-o"></i>
-                  <span class="label label-danger">9</span>
+                  <!--<span class="label label-danger">9</span>-->
                 </a>
                 <ul class="dropdown-menu">
                   <li class="header">You have 9 tasks</li>
@@ -234,14 +234,12 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="<?php echo Cake\Routing\Router::url('/users/logout');?>" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>
               </li>
-              <li>
-                  <a href="<?php echo Cake\Routing\Router::url('/users/logout');?>">Logout</a>    
-              </li>
+              
             </ul>
           </div>
         </nav>

@@ -22,14 +22,16 @@ use Cake\Network\Exception\NotFoundException;
 ?>
         <div class="row">
                 <!-- item -->
-                <div class="col-md-8 text-center">
+                <div class="col-md-12 text-center">
                     <div class="panel panel-default panel-pricing">
                         <div class="panel-heading">
                             <!--<i class="fa fa-desktop"></i>-->
                             <h3>Total Price</h3>
                         </div>
                         <div class="panel-body text-center">
-                            <p> <h3>R <?php echo number_format($number * $price,2);?></h3></p>
+                            <p> <h3 class="t-price">R <?php echo number_format($number * $price,2);?></h3></p>
+                            <input type="hidden" class="form-control text-center" name="current_total" value="<?php echo $number * $price;?>">
+                            <input type="hidden" class="form-control text-center" name="total" value="<?php echo $number * $price;?>">
                         </div>
                        <!-- <ul class="list-group text-center">
                             <li class="list-group-item"><i class="fa fa-check"></i> Personal use</li>
@@ -45,45 +47,46 @@ use Cake\Network\Exception\NotFoundException;
         </div>
         <h4> Extra options</h4>
 	<div class="row">
-		<div form-group class="col-md-3">
-                    <label class="control-label">Radio Edit (R55.00 each)</label>
+            <div class="col-md-12">
+		<div  class="form-group col-md-4">
+                    <label class="control-label"><?php echo 'Radio Edit (R'.$extra.' each)'?></label>
 			<div class="input-group number-spinner">
-				<span class="input-group-btn">
-					<button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+				<span class="input-group-btn extra-down">
+					<button class="btn btn-default" data-dir="dwn" type="button"><span class="glyphicon glyphicon-minus"></span></button>
 				</span>
-				<input type="text" class="form-control text-center" value="0">
-				<span class="input-group-btn">
-					<button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+				<input type="text" class="form-control text-center" name="radio_edit" value="0">
+				<span class="input-group-btn extra-up">
+                                    <button class="btn btn-default" data-dir="up" type="button"><span class="glyphicon glyphicon-plus"></span></button>
 				</span>
 			</div>
 		</div>
                 
-                <div form-group class="col-md-3">
-                    <label class="control-label">Backtrack (R55.00 each)</label>
+                <div  class="form-group col-md-4">
+                    <label class="control-label"><?php echo 'Backtrack (R'.$extra.' each)'?></label>
 			<div class="input-group number-spinner">
-				<span class="input-group-btn">
-					<button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+				<span class="input-group-btn extra-down">
+					<button class="btn btn-default" data-dir="dwn" type="button"><span class="glyphicon glyphicon-minus"></span></button>
 				</span>
-				<input type="text" class="form-control text-center" value="0">
-				<span class="input-group-btn">
-					<button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+				<input type="text" class="form-control text-center" name="back_track" value="0">
+				<span class="input-group-btn extra-up">
+					<button class="btn btn-default" data-dir="up" type="button"><span class="glyphicon glyphicon-plus"></span></button>
 				</span>
 			</div>
 		</div>
             
-                <div form-group class="col-md-3">
-                    <label class="control-label">Instrumental (R55.00 each)</label>
+                <div  class="form-group col-md-4">
+                    <label class="control-label"><?php echo 'Instrumental (R'.$extra.' each)'?></label>
 			<div class="input-group number-spinner">
-				<span class="input-group-btn">
-					<button class="btn btn-default" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
+				<span class="input-group-btn extra-down">
+					<button class="btn btn-default" data-dir="dwn" type="button"><span class="glyphicon glyphicon-minus"></span></button>
 				</span>
-				<input type="text" class="form-control text-center" value="0">
-				<span class="input-group-btn">
-					<button class="btn btn-default" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
+				<input type="text" class="form-control text-center" name="instru" value="0">
+				<span class="input-group-btn extra-up">
+					<button class="btn btn-default" data-dir="up" type="button"><span class="glyphicon glyphicon-plus"></span></button>
 				</span>
 			</div>
 		</div>
 	</div>
-         
+        </div> 
         <br>
 

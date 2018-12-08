@@ -19,7 +19,7 @@ $cakeDescription = 'Essencial Mastering';
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=max-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <title>
             <?php echo $cakeDescription; ?>
@@ -38,8 +38,10 @@ $cakeDescription = 'Essencial Mastering';
         <!-- Font Awesome Icon -->
         <?php echo $this->Html->css('font-awesome.min.css'); ?>
         <!-- Custom stlylesheet -->
+        <?php echo $this->Html->css('bootstrap-dropdownhover.min.css'); ?>
         <?php echo $this->Html->css('cake-style.css');?>
         <?php echo $this->Html->css('style.css'); ?>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -67,10 +69,11 @@ $cakeDescription = 'Essencial Mastering';
         <?php echo $this->element('footers/footer');?>
         <!-- /Footer -->
         <!-- jQuery Plugins -->
-        <?php echo $this->fetch('jquery.min.js'); ?>
-        <?php echo $this->fetch('bootstrap.min.js'); ?>
-        <?php echo $this->fetch('owl.carousel.min.js'); ?>
-        <?php echo $this->fetch('jquery.magnific-popup.js'); ?>
-        <?php echo $this->fetch('main.js'); ?>
+        <?php echo $this->Html->script('jquery.min.js'); ?>
+        <?php echo $this->Html->script('bootstrap.min.js'); ?>
+        <?php echo $this->Html->script('bootstrap-dropdownhover.min.js'); ?>
+        <?php echo $this->Html->script('owl.carousel.min.js'); ?>
+        <?php echo $this->Html->script('jquery.magnific-popup.js'); ?>
+        <?php echo $this->Html->script('main.js'); ?>
     </body>
 </html>

@@ -14,10 +14,56 @@
  */
 
 ?>
+<style>
+/* The container <div> - needed to position the dropdown content */
+.dropdown-c {
+    position: relative;
+    display: inline-block;
+}
 
+.dropdown-c>a:before {
+        font-family: 'FontAwesome';
+        content: "\f054";
+        font-size: 6px;
+        //margin-left: 6px;
+        float: right;
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transition: 0.2s transform;
+        transition: 0.2s transform;
+    }
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #E1C275;}
+
+/* Show the dropdown menu on hover */
+.dropdown-c:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown-c:hover .dropbtn {background-color: #3e8e41;}
+</style>
 <header id="home">
     <!-- Background Image -->
-    <div class="bg-img" style="background-image: url('img/background1.jpg');">
+    <div class="bg-img" style="background-image: url('../img/background1.jpg');">
         <div class="overlay"></div>
     </div>
     <!-- /Background Image -->
@@ -29,8 +75,8 @@
             <div class="navbar-header">
                 <!-- Logo -->
                 <div class="navbar-brand">
-                    <a href="index.html">
-                        <img class="logo" src="img/es-logo.png" alt="logo">
+                    <a href="index.html">                      
+                        <?php echo $this->Html->image('es-logo.png',['class'=>'logo','alt'=>'logo']);?>
                         <!--<img class="logo-alt" src="img/logo-alt.png" alt="logo">-->
                     </a>
                 </div>
@@ -50,15 +96,16 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">Who We Are</a></li>                       
                     <li><a href="#service">Services</a></li>
-                    <li class="has-dropdown"><a href="#pricing">Booking</a>
-                        <ul class="dropdown">
-                            <li><a href="#" class="login">&nbsp Login</a><a href="#" class="reg">&nbsp Register</a></li>
+                    <li class="dropdown-c"><a href="#pricing">Booking</a>
+                        <ul class="dropdown-content">
+                            <li><a href="#" class="login">&nbsp Login</a></li>
+                            <li><a href="#" class="reg">&nbsp Register</a></li>
                         </ul>
                     </li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#team">Our Team</a></li>
-                    <li class="has-dropdown"><a href="#blog">Studio</a>
-                        <ul class="dropdown">
+                    <li class="dropdown-c"><a href="#blog">Studio</a>
+                        <ul class="dropdown-content">
                             <li><a href="#">&nbsp How to upload / send track</a></li>
                         </ul>
                     </li>
@@ -84,7 +131,7 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img src="./img/mastering.jpg" alt="Los Angeles">
+                            <?php echo $this->Html->image('mastering.jpg',['alt'=>'logo']);?>
                             <div class="carousel-caption">
                                 <h1 class="white-text">SOOTHING SOUND TO THE EAR</h1>
                                 <p class="white-text"> Professional sounds at your fingertips, let us finish what you have started.
@@ -95,7 +142,7 @@
                         </div>
 
                         <div class="item">
-                            <img src="./img/mastering.jpg" alt="Chicago">
+                            <?php echo $this->Html->image('mastering.jpg',['alt'=>'logo']);?>
                             <div class="carousel-caption">
                                 <h1 class="white-text">SUPERIOR AUDIO ENGINEERING</h1>
                                 <p class="white-text"> Professional sounds at your fingertips, let us finish what you have started.
@@ -106,7 +153,7 @@
                         </div>
 
                         <div class="item">
-                            <img src="./img/mastering.jpg" alt="New York">
+                            <?php echo $this->Html->image('mastering.jpg',['alt'=>'logo']);?>
                         </div>
                     </div>
 

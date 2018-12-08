@@ -54,7 +54,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
-    //$routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'login']);
+    //$routes->connect('/users/*', ['controller' => 'Users', 'action' => 'home']);
+    Router::redirect('/pay','https://sandbox.payfast.co.za/eng/process');
 
     /**
      * Connect catchall routes for all controllers.

@@ -22,6 +22,7 @@ use Cake\Network\Exception\NotFoundException;
 use Cake\Network\Email\Email;
 use Cake\View\Exception\MissingTemplateException;
 use Cake\Http\Client;
+use Cake\Http\ServerRequest;
 
 /**
  * Static content controller
@@ -41,9 +42,10 @@ class UsersController extends AppController {
      */
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['login', 'register','home']);
+        $this->Auth->allow(['home','register','login','cancel']);
         $this->loadComponent('RequestHandler');
         $this->set('user', $this->Auth);
+                
     }
     
     /**
@@ -54,17 +56,28 @@ class UsersController extends AppController {
         $this->set('users', $user);
         
     }
+    
+    public function cancel() {
+        
+     $this->viewBuilder()->layout('admin');   
+    }
 
+    public function success() {
+       
+     $this->viewBuilder()->layout('admin');       
+    }
+    
     /**
      * Displays login view
      */
     public function dashboard() {
         $user = $this->Users->find();
-       
+        $order = $this->Orders->newEntity();
+        $this->set('order', $order);
         $this->set('users', $user);
         $this->set('title', 'Dashboard');
         
-         $this->viewBuilder()->layout('admin');       
+        $this->viewBuilder()->layout('admin');       
     }
 
     /**
@@ -72,6 +85,7 @@ class UsersController extends AppController {
      * @return type
      */
     public function login() {
+       if ($this->request->is('ajax')) {
         if ($this->request->is('post')) {
             $user = $this->Auth->identify();       
             if ($user) {
@@ -90,6 +104,8 @@ class UsersController extends AppController {
         }
         $this->set('status', $status);
         $this->viewBuilder()->layout(false);
+       }
+       
     }
 
     /**
@@ -124,11 +140,19 @@ class UsersController extends AppController {
 
             $this->viewBuilder()->layout(false);
         }
+        
     }
 
-    public function pricing($track) {
+    public function pricing($track,$service) {
+        
         if ($this->request->is('ajax')) {
             $number = (int)$track;
+            $extra = number_format(55);
+            
+            if($service == 'Mixing'){
+               $extra = number_format(100); 
+            }
+            
             if($this->in_range($number, 0, 4)){                
                $price = 450;
             }elseif($this->in_range($number, 3, 8)){
@@ -136,55 +160,67 @@ class UsersController extends AppController {
             }elseif($this->in_range($number, 7, 13)){
                $price = 350; 
             }
+            
             $this->set('price',$price);
             $this->set('number',$number);
-       }
+            $this->set('extra',$extra);
+        }
+       
        $this->viewBuilder()->layout(false);
-    }    
+    } 
+    
+    public function profile() {
+        $profile = $this->Users->get($this->Auth->user('id'));
+        if ($this->request->is(['post', 'put'])) {
+        $this->Users->patchEntity($profile, $this->request->data);
+        if ($this->Users->save($profile)) {
+            $this->Flash->success(__('Your Profile has been updated.'));
+            return $this->redirect(['action' => 'profile']);
+        }
+        $this->Flash->error(__('Unable to update your profile.'));
+    }
+        $this->set('profile', $profile);
+        $this->viewBuilder()->layout('admin');    
+    }
 
     /**
      * 
      * @param type $id
      */
-    private function discount($id) {
+    public function orders() {
+        $order = $this->Orders->find()->where(['user_id'=> $this->Auth->user('id')]);
+        $this->set('orders', $order);
+        $this->viewBuilder()->layout('admin');    
+    }
+    
+    public function users() {
+        $users = $this->users()->find('all');
+        $this->set('users', $users);
+        $this->viewBuilder()->layout('admin');    
+    }
+    
+    public function viewOrder($id) {
         $order = $this->Orders->get($id);
-        $discount = 2;
-        $newamount = $order->amount_to_pay - ($order->amount_to_pay * ($discount / 100));
-        $order->amount_to_pay = $newamount;
-        $this->Orders->save($order);
+        $this->set('order', $order);
+        $this->viewBuilder()->layout('admin');    
     }
 
     /**
      * 
      */
-    public function purchase() {
-        if ($this->request->is('ajax')) {
-            $order = $this->Orders->newEntity();
-            if ($this->request->is('post')) {
-                $currency = $this->request->data('foreign_currency_purchased');
-                $order->user_id = $this->Auth->user('id');
-                $order = $this->Orders->patchEntity($order, $this->request->data);
-                if ($this->Orders->save($order)) {
-                    switch ($currency) {
-                        case "USD":
-                            break;
-                        case "GBP":
-                            $this->sendmail($order->id);
-                            break;
-                        case "EUR":
-                            $this->discount($order->id);
-                            break;
-                        case "KES":
-                            break;
-                    }
-
-                    $this->set(['status' => '200']);
-                } else {
-                    $this->set(['status' => 'error']);
-                }
+    public function saveOrder() {
+       $order = $this->Orders->newEntity();
+        if ($this->request->is('post')) {
+            $order = $this->Orders->patchEntity($order, $this->request->data);           
+            $order->user_id = $this->Auth->user('id');
+            if ($this->Orders->save($order)) {
+                exit();
+                //$this->Flash->success(__('Your order has been saved.'));
+                //return $this->redirect(['action' => 'orders']);
             }
-            $this->viewBuilder()->layout(false);
+            $this->Flash->error(__('Unable to save your order.'));
         }
+        $this->set('order', $order);
     }
 
     /**

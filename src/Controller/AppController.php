@@ -64,6 +64,7 @@ class AppController extends Controller {
                     'fields' => ['username' => 'email', 'password' => 'password']
                 ]
             ],
+            'authError' => 'Did you really think you are allowed to see that?',
             'loginRedirect' => [
                 'controller' => 'Users',
                 'action' => 'dashboard'
@@ -82,6 +83,7 @@ class AppController extends Controller {
     public function beforeFilter(\Cake\Event\Event $event) {
         $this->loadModel('AuditLogs');
         $this->loadModel('Users');
+        $this->loadModel('Orders');
     }
 
     /**
@@ -96,6 +98,11 @@ class AppController extends Controller {
         ) {
             $this->set('_serialize', true);
         }
+    }
+
+    public function nice_date($date) {
+        $now = Time::parse($date);
+        return $now->nice();
     }
 
     protected function sendmail($id) {
