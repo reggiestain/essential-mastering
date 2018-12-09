@@ -45,7 +45,8 @@ use Cake\Network\Exception\NotFoundException;
                 </div>
                 <!-- /item -->
         </div>
-        <h4> Extra options</h4>
+    <div><h3> <?php echo "Number of tracks <b>(".$price." each)</b>"?></h3></div>
+        <h3> Extra options</h3>
 	<div class="row">
             <div class="col-md-12">
 		<div  class="form-group col-md-4">

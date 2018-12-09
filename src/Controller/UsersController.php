@@ -42,22 +42,21 @@ class UsersController extends AppController {
      */
     public function beforeFilter(\Cake\Event\Event $event) {
         parent::beforeFilter($event);
-        $this->Auth->allow(['home','register','login','cancel']);
+        $this->Auth->allow(['home', 'register', 'login', 'cancel']);
         $this->loadComponent('RequestHandler');
-        
+
         $this->set('user', $this->Auth);
-        if($this->Auth->user('id') == 2){
-        $this->set('master',$this->Orders->find()->where(['temp_service'=>'mastering','user_id'=>$this->Auth->user('id')])->count());
-        $this->set('mixing',$this->Orders->find()->where(['temp_service'=>'mixing','user_id'=>$this->Auth->user('id')])->count());
-        $this->set('record',$this->Orders->find()->where(['temp_service'=>'recording','user_id'=>$this->Auth->user('id')])->count());
-        }else{
-        $this->set('master',$this->Orders->find()->where(['temp_service'=>'mastering'])->count());
-        $this->set('mixing',$this->Orders->find()->where(['temp_service'=>'mixing'])->count());
-        $this->set('record',$this->Orders->find()->where(['temp_service'=>'recording'])->count());    
+        if ($this->Auth->user('id') == 2) {
+            $this->set('master', $this->Orders->find()->where(['temp_service' => 'mastering', 'user_id' => $this->Auth->user('id')])->count());
+            $this->set('mixing', $this->Orders->find()->where(['temp_service' => 'mixing', 'user_id' => $this->Auth->user('id')])->count());
+            $this->set('record', $this->Orders->find()->where(['temp_service' => 'recording', 'user_id' => $this->Auth->user('id')])->count());
+        } else {
+            $this->set('master', $this->Orders->find()->where(['temp_service' => 'mastering'])->count());
+            $this->set('mixing', $this->Orders->find()->where(['temp_service' => 'mixing'])->count());
+            $this->set('record', $this->Orders->find()->where(['temp_service' => 'recording'])->count());
         }
-                
     }
-    
+
     /**
      * Displays home view
      */
@@ -66,19 +65,18 @@ class UsersController extends AppController {
         $user = $this->Users->newEntity();
         $this->set('users', $user);
         $this->set('content', $content);
-        
     }
-    
+
     public function cancel() {
-        
-     $this->viewBuilder()->layout('admin');   
+
+        $this->viewBuilder()->layout('admin');
     }
 
     public function success() {
-       
-     $this->viewBuilder()->layout('admin');       
+
+        $this->viewBuilder()->layout('admin');
     }
-    
+
     /**
      * Displays login view
      */
@@ -88,8 +86,8 @@ class UsersController extends AppController {
         $this->set('order', $order);
         $this->set('users', $user);
         $this->set('title', 'Dashboard');
-        
-        $this->viewBuilder()->layout('admin');       
+
+        $this->viewBuilder()->layout('admin');
     }
 
     /**
@@ -97,27 +95,26 @@ class UsersController extends AppController {
      * @return type
      */
     public function login() {
-       if ($this->request->is('ajax')) {
-        if ($this->request->is('post')) {
-            $user = $this->Auth->identify();       
-            if ($user) {
-                $this->Auth->setUser($user);
-                $auditTable = $this->AuditLogs->newEntity();
-                $Log = ['user_id' => $this->Auth->user('id'), 'event' => 'Sign In'];
-                $Audit = $this->AuditLogs->patchEntity($auditTable, $Log);
-                $this->AuditLogs->save($Audit);
-                //$this->Flash->success(__('Welcome ' . $this->Auth->user('email')));
-                //return $this->redirect($this->Auth->redirectUrl());
-                $status = true;
-            }else{
-            //$this->Flash->error(__('Incorrect email or password'));
-            $status = false;            
+        if ($this->request->is('ajax')) {
+            if ($this->request->is('post')) {
+                $user = $this->Auth->identify();
+                if ($user) {
+                    $this->Auth->setUser($user);
+                    $auditTable = $this->AuditLogs->newEntity();
+                    $Log = ['user_id' => $this->Auth->user('id'), 'event' => 'Sign In'];
+                    $Audit = $this->AuditLogs->patchEntity($auditTable, $Log);
+                    $this->AuditLogs->save($Audit);
+                    //$this->Flash->success(__('Welcome ' . $this->Auth->user('email')));
+                    //return $this->redirect($this->Auth->redirectUrl());
+                    $status = true;
+                } else {
+                    //$this->Flash->error(__('Incorrect email or password'));
+                    $status = false;
+                }
             }
+            $this->set('status', $status);
+            $this->viewBuilder()->layout(false);
         }
-        $this->set('status', $status);
-        $this->viewBuilder()->layout(false);
-       }
-       
     }
 
     /**
@@ -152,47 +149,56 @@ class UsersController extends AppController {
 
             $this->viewBuilder()->layout(false);
         }
-        
     }
 
-    public function pricing($track,$service) {
-        
+    public function pricing($track, $service) {
+
         if ($this->request->is('ajax')) {
-            $number = (int)$track;
+            $number = (int) $track;
             $extra = number_format(55);
-            
-            if($service == 'Mixing'){
-               $extra = number_format(100); 
+
+            if ($service == 'Mixing') {
+                $extra = number_format(100);
+
+                if ($this->in_range($number, 0, 4)) {
+                    $price = 450;
+                } elseif ($this->in_range($number, 3, 8)) {
+                    $price = 400;
+                } elseif ($this->in_range($number, 7, 13)) {
+                    $price = 350;
+                }
             }
-            
-            if($this->in_range($number, 0, 4)){                
-               $price = 450;
-            }elseif($this->in_range($number, 3, 8)){
-               $price = 400; 
-            }elseif($this->in_range($number, 7, 13)){
-               $price = 350; 
+
+            if ($service == 'Mastering') {
+                if ($this->in_range($number, 0, 4)) {
+                    $price = 450;
+                } elseif ($this->in_range($number, 3, 8)) {
+                    $price = 400;
+                } elseif ($this->in_range($number, 7, 13)) {
+                    $price = 350;
+                }
             }
-            
-            $this->set('price',$price);
-            $this->set('number',$number);
-            $this->set('extra',$extra);
+
+            $this->set('price', $price);
+            $this->set('number', $number);
+            $this->set('extra', $extra);
         }
-       
-       $this->viewBuilder()->layout(false);
-    } 
-    
+
+        $this->viewBuilder()->layout(false);
+    }
+
     public function profile() {
         $profile = $this->Users->get($this->Auth->user('id'));
         if ($this->request->is(['post', 'put'])) {
-        $this->Users->patchEntity($profile, $this->request->data);
-        if ($this->Users->save($profile)) {
-            $this->Flash->success(__('Your Profile has been updated.'));
-            return $this->redirect(['action' => 'profile']);
+            $this->Users->patchEntity($profile, $this->request->data);
+            if ($this->Users->save($profile)) {
+                $this->Flash->success(__('Your Profile has been updated.'));
+                return $this->redirect(['action' => 'profile']);
+            }
+            $this->Flash->error(__('Unable to update your profile.'));
         }
-        $this->Flash->error(__('Unable to update your profile.'));
-    }
         $this->set('profile', $profile);
-        $this->viewBuilder()->layout('admin');    
+        $this->viewBuilder()->layout('admin');
     }
 
     /**
@@ -200,59 +206,59 @@ class UsersController extends AppController {
      * @param type $id
      */
     public function orders() {
-        $order = $this->Orders->find()->where(['user_id'=> $this->Auth->user('id')]);
+        $order = $this->Orders->find()->where(['user_id' => $this->Auth->user('id')]);
         $this->set('orders', $order);
-        $this->viewBuilder()->layout('admin');    
+        $this->viewBuilder()->layout('admin');
     }
-    
+
     public function users() {
         $users = $this->Users->find('all');
         $this->set('users', $users);
-        $this->viewBuilder()->layout('admin');    
+        $this->viewBuilder()->layout('admin');
     }
-    
+
     public function edit($id) {
         $users = $this->Users->get($id);
         if ($this->request->is(['post', 'put'])) {
-        $this->Users->patchEntity($users, $this->request->data);
-        if ($this->Users->save($users)) {
-            $this->Flash->success(__('User has been updated.'));
-            return $this->redirect(['action' => 'users']);
+            $this->Users->patchEntity($users, $this->request->data);
+            if ($this->Users->save($users)) {
+                $this->Flash->success(__('User has been updated.'));
+                return $this->redirect(['action' => 'users']);
+            }
+            $this->Flash->error(__('Unable to update your user.'));
+            return $this->redirect(['action' => 'edit', $id]);
         }
-        $this->Flash->error(__('Unable to update your user.'));
-        return $this->redirect(['action' => 'edit',$id]);
-    }
         $this->set('users', $users);
-        $this->viewBuilder()->layout('admin');    
+        $this->viewBuilder()->layout('admin');
     }
-    
+
     public function viewOrder($id) {
         $order = $this->Orders->get($id);
         $this->set('order', $order);
-        $this->viewBuilder()->layout('admin');    
+        $this->viewBuilder()->layout('admin');
     }
-    
+
     public function content() {
         $content = $this->Content->get(1);
         if ($this->request->is(['post', 'put'])) {
-        $this->Content->patchEntity($content, $this->request->data);
-        if ($this->Content->save($content)) {
-            $this->Flash->success(__('Content has been updated.'));
-            return $this->redirect(['action' => 'content']);
+            $this->Content->patchEntity($content, $this->request->data);
+            if ($this->Content->save($content)) {
+                $this->Flash->success(__('Content has been updated.'));
+                return $this->redirect(['action' => 'content']);
+            }
+            $this->Flash->error(__('Unable to update your content.'));
         }
-        $this->Flash->error(__('Unable to update your content.'));
-    }
         $this->set('content', $content);
-        $this->viewBuilder()->layout('admin');    
+        $this->viewBuilder()->layout('admin');
     }
 
     /**
      * 
      */
     public function saveOrder() {
-       $order = $this->Orders->newEntity();
+        $order = $this->Orders->newEntity();
         if ($this->request->is('post')) {
-            $order = $this->Orders->patchEntity($order, $this->request->data);           
+            $order = $this->Orders->patchEntity($order, $this->request->data);
             $order->user_id = $this->Auth->user('id');
             if ($this->Orders->save($order)) {
                 exit();
