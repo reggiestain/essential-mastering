@@ -44,7 +44,17 @@ class UsersController extends AppController {
         parent::beforeFilter($event);
         $this->Auth->allow(['home','register','login','cancel']);
         $this->loadComponent('RequestHandler');
+        
         $this->set('user', $this->Auth);
+        if($this->Auth->user('id') == 2){
+        $this->set('master',$this->Orders->find()->where(['temp_service'=>'mastering','user_id'=>$this->Auth->user('id')])->count());
+        $this->set('mixing',$this->Orders->find()->where(['temp_service'=>'mixing','user_id'=>$this->Auth->user('id')])->count());
+        $this->set('record',$this->Orders->find()->where(['temp_service'=>'recording','user_id'=>$this->Auth->user('id')])->count());
+        }else{
+        $this->set('master',$this->Orders->find()->where(['temp_service'=>'mastering'])->count());
+        $this->set('mixing',$this->Orders->find()->where(['temp_service'=>'mixing'])->count());
+        $this->set('record',$this->Orders->find()->where(['temp_service'=>'recording'])->count());    
+        }
                 
     }
     
@@ -196,7 +206,22 @@ class UsersController extends AppController {
     }
     
     public function users() {
-        $users = $this->users()->find('all');
+        $users = $this->Users->find('all');
+        $this->set('users', $users);
+        $this->viewBuilder()->layout('admin');    
+    }
+    
+    public function edit($id) {
+        $users = $this->Users->get($id);
+        if ($this->request->is(['post', 'put'])) {
+        $this->Users->patchEntity($users, $this->request->data);
+        if ($this->Users->save($users)) {
+            $this->Flash->success(__('User has been updated.'));
+            return $this->redirect(['action' => 'users']);
+        }
+        $this->Flash->error(__('Unable to update your user.'));
+        return $this->redirect(['action' => 'edit',$id]);
+    }
         $this->set('users', $users);
         $this->viewBuilder()->layout('admin');    
     }

@@ -84,7 +84,7 @@ class AppController extends Controller {
         $this->loadModel('AuditLogs');
         $this->loadModel('Users');
         $this->loadModel('Orders');
-        $this->loadModel('Content');
+        $this->loadModel('Content');        
     }
 
     /**

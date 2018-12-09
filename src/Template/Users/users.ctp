@@ -54,6 +54,7 @@ use Cake\Routing\Router;
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
+                                <div><?php echo $this->Flash->render(); ?></div>
                                 <table id="example" class="table table-bordered" style="width:100%">
                                     <thead>
                                         <tr>
@@ -69,21 +70,19 @@ use Cake\Routing\Router;
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($users as $user): ?>
+                                        <?php foreach ($users as $users): ?>
                                         <tr>
-                                            <td><?php echo $user->id;?></td>
-                                            <td><?php echo $user->username;?></td>
-                                            <td><?php echo $user->first_name;?></td>                                            
-                                            <td><?php echo $user->surname;?></td>
-                                            <td><?php echo $user->email;?></td>
-                                            <td><?php echo $user->mobile;?></td>
-                                            <td><?php echo $user->gender;?></td>
-                                            <td><?php echo $user->race;?></td>
+                                            <td><?php echo $users->id;?></td>
+                                            <td><?php echo $users->username;?></td>
+                                            <td><?php echo $users->first_name;?></td>                                            
+                                            <td><?php echo $users->surname;?></td>
+                                            <td><?php echo $users->email;?></td>
+                                            <td><?php echo $users->mobile;?></td>
+                                            <td><?php echo $users->gender;?></td>
+                                            <td><?php echo $users->race;?></td>
                                             <td>
-                                            <?php if($user->user('id') == 1){?>
-                                            <a href="<?php //echo Router::url('/users/view_order/'.$user->id);?>" class="btn btn-primary btn-xs">View</a>                                                                                        
-                                            <?php } else { ?>
-                                            <a href="<?php //echo Router::url('/users/view_order/'.$user->id);?>" class="btn btn-primary btn-xs">View</a>
+                                            <?php if($user->user('user_group_id') == 1){?>                                                                                                                                  
+                                            <a href="<?php echo Router::url('/users/edit/'.$users->id);?>" class="btn btn-primary btn-xs">Edit</a>
                                             <button class="btn btn-danger btn-xs">Cancel</button>
                                             <?php } ?>
                                             </td>

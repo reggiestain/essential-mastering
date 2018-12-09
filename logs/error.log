@@ -3118,3 +3118,155 @@ Stack Trace:
 #2 {main}
 
 
+2018-12-09 12:23:57 Error: [Error] Call to a member function find() on boolean
+Request URL: /users/users
+Referer URL: http://localhost:8765/users/dashboard
+Client IP: 127.0.0.1
+Stack Trace:
+#0 [internal function]: App\Controller\UsersController->users()
+#1 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#2 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(122): Cake\Controller\Controller->invokeAction()
+#3 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(96): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#4 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#12 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#13 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Server.php(82): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#14 C:\wamp64\www\essentials\webroot\index.php(37): Cake\Http\Server->run()
+#15 {main}
+
+
+2018-12-09 12:24:27 Error: [Error] Call to a member function find() on boolean
+Request URL: /users/users
+Referer URL: http://localhost:8765/users/dashboard
+Client IP: 127.0.0.1
+Stack Trace:
+#0 [internal function]: App\Controller\UsersController->users()
+#1 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Controller\Controller.php(435): call_user_func_array(Array, Array)
+#2 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(122): Cake\Controller\Controller->invokeAction()
+#3 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(96): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#4 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#5 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#6 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#7 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#12 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#13 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Server.php(82): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#14 C:\wamp64\www\essentials\webroot\index.php(37): Cake\Http\Server->run()
+#15 {main}
+
+
+2018-12-09 12:24:46 Error: [Error] Call to undefined method App\Model\Entity\User::user()
+Request URL: /users/users
+Referer URL: http://localhost:8765/users/dashboard
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(1008): include()
+#1 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(967): Cake\View\View->_evaluate('C:\\wamp64\\www\\e...', Array)
+#2 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(591): Cake\View\View->_render('C:\\wamp64\\www\\e...')
+#3 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Controller\Controller.php(617): Cake\View\View->render(NULL, NULL)
+#4 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(128): Cake\Controller\Controller->render()
+#5 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(96): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#6 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#12 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#13 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#14 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#15 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Server.php(82): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#16 C:\wamp64\www\essentials\webroot\index.php(37): Cake\Http\Server->run()
+#17 {main}
+
+
+2018-12-09 12:27:27 Error: [Error] Call to undefined method App\Model\Entity\User::user()
+Request URL: /users/users
+Referer URL: http://localhost:8765/users/dashboard
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(1008): include()
+#1 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(967): Cake\View\View->_evaluate('C:\\wamp64\\www\\e...', Array)
+#2 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(591): Cake\View\View->_render('C:\\wamp64\\www\\e...')
+#3 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Controller\Controller.php(617): Cake\View\View->render(NULL, NULL)
+#4 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(128): Cake\Controller\Controller->render()
+#5 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(96): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#6 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#7 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#8 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#9 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#10 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#11 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#12 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#13 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#14 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#15 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Server.php(82): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#16 C:\wamp64\www\essentials\webroot\index.php(37): Cake\Http\Server->run()
+#17 {main}
+
+
+2018-12-09 12:41:42 Error: [Error] Call to undefined method App\Model\Entity\User::user()
+Request URL: /users/edit/5
+Referer URL: http://localhost:8765/users/users
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(1008): include()
+#1 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(967): Cake\View\View->_evaluate('C:\\wamp64\\www\\e...', Array)
+#2 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(1353): Cake\View\View->_render('C:\\wamp64\\www\\e...', Array)
+#3 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(496): Cake\View\View->_renderElement('C:\\wamp64\\www\\e...', Array, Array)
+#4 C:\wamp64\www\essentials\src\Template\Users\edit.ctp(29): Cake\View\View->element('mentor/sidebar')
+#5 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(1008): include('C:\\wamp64\\www\\e...')
+#6 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(967): Cake\View\View->_evaluate('C:\\wamp64\\www\\e...', Array)
+#7 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\View\View.php(591): Cake\View\View->_render('C:\\wamp64\\www\\e...')
+#8 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Controller\Controller.php(617): Cake\View\View->render(NULL, NULL)
+#9 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(128): Cake\Controller\Controller->render()
+#10 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(96): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#11 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#13 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#14 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#15 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#16 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#17 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#18 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#19 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#20 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Server.php(82): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#21 C:\wamp64\www\essentials\webroot\index.php(37): Cake\Http\Server->run()
+#22 {main}
+
+
+2018-12-09 13:07:49 Error: [Error] Call to a member function find() on boolean
+Request URL: /users/users
+Referer URL: http://localhost:8765/users/edit/9
+Client IP: 127.0.0.1
+Stack Trace:
+#0 C:\wamp64\www\essentials\src\Controller\UsersController.php(44): App\Controller\AppController->beforeFilter(Object(Cake\Event\Event))
+#1 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Event\EventManager.php(422): App\Controller\UsersController->beforeFilter(Object(Cake\Event\Event))
+#2 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Event\EventManager.php(391): Cake\Event\EventManager->_callListener(Array, Object(Cake\Event\Event))
+#3 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php(78): Cake\Event\EventManager->dispatch(Object(Cake\Event\Event))
+#4 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Controller\Controller.php(497): Cake\Controller\Controller->dispatchEvent('Controller.init...')
+#5 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(117): Cake\Controller\Controller->startupProcess()
+#6 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\ActionDispatcher.php(96): Cake\Http\ActionDispatcher->_invoke(Object(App\Controller\UsersController))
+#7 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\BaseApplication.php(83): Cake\Http\ActionDispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#8 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Http\BaseApplication->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#9 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#10 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\RoutingMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#11 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php(88): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#12 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Routing\Middleware\AssetMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#13 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php(52): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#14 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(65): Cake\Error\Middleware\ErrorHandlerMiddleware->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response), Object(Cake\Http\Runner))
+#15 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Runner.php(51): Cake\Http\Runner->__invoke(Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#16 C:\wamp64\www\essentials\vendor\cakephp\cakephp\src\Http\Server.php(82): Cake\Http\Runner->run(Object(Cake\Http\MiddlewareQueue), Object(Zend\Diactoros\ServerRequest), Object(Zend\Diactoros\Response))
+#17 C:\wamp64\www\essentials\webroot\index.php(37): Cake\Http\Server->run()
+#18 {main}
+
+

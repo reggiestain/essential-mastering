@@ -6,7 +6,7 @@
               <!-- small box -->
               <div class="small-box bg-aqua">
                 <div class="inner">
-                  <h3>0<sup style="font-size: 20px">%</sup></h3>
+                  <h3><?php echo $master;?><sup style="font-size: 20px">%</sup></h3>
                   <p>Mastering</p>
                 </div>
                 <div class="icon">
@@ -19,7 +19,7 @@
               <!-- small box -->
               <div class="small-box bg-green">
                 <div class="inner">
-                  <h3>0<sup style="font-size: 20px">%</sup></h3>
+                  <h3><?php echo $mixing;?><sup style="font-size: 20px">%</sup></h3>
                   <p>Mixing</p>
                 </div>
                 <div class="icon">
@@ -32,7 +32,7 @@
               <!-- small box -->
               <div class="small-box bg-yellow">
                 <div class="inner">
-                  <h3>0<sup style="font-size: 20px">%</sup></h3>
+                  <h3><?php echo $record;?><sup style="font-size: 20px">%</sup></h3>
                   <p>Recording</p>
                 </div>
                 <div class="icon">
